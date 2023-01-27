@@ -28,6 +28,9 @@ class PokemonListFragment : Fragment() {
 
         binding = FragmentPokemonListBinding.inflate(layoutInflater)
 
+        pokemonListAdapter = PokemonListAdapter(::onItemClickListener)
+        binding.recyclerPokemon.adapter = pokemonListAdapter
+
         showOnRecyclerView()
 
         binding.buttonPrevious.setOnClickListener {
@@ -47,16 +50,13 @@ class PokemonListFragment : Fragment() {
         return binding.root
     }
 
-
     private fun showOnRecyclerView() {
         lifecycleScope.launch {
             viewModel.getPokemonData(pageCounter, 20)
         }
 
         viewModel.pokemonLiveData.observe(viewLifecycleOwner) {
-            pokemonListAdapter = PokemonListAdapter(it, ::onItemClickListener)
-            binding.recyclerPokemon.adapter = pokemonListAdapter
-
+            pokemonListAdapter.setPokemonList(it?.pokemons)
         }
     }
 

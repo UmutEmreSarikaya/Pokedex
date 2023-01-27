@@ -6,14 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.umut.challenge3.Pokemon
-import com.umut.challenge3.Response
 import com.umut.challenge3.databinding.ItemPokemonBinding
 
-class PokemonListAdapter(
-    private val response: Response?,
-    val onItemClickListener: (String?) -> Unit
-) :
+class PokemonListAdapter(val onItemClickListener: (String?) -> Unit) :
     RecyclerView.Adapter<PokemonListAdapter.PokemonListHolder>() {
+
+    private var pokemonList: List<Pokemon?>? = listOf()
 
     inner class PokemonListHolder(
         private val itemBinding: ItemPokemonBinding,
@@ -22,7 +20,7 @@ class PokemonListAdapter(
 
         init {
             itemView.setOnClickListener {
-                onItemClickListener(response?.pokemons?.get(adapterPosition)?.name)
+                onItemClickListener(pokemonList?.get(adapterPosition)?.name)
             }
         }
 
@@ -45,9 +43,14 @@ class PokemonListAdapter(
     }
 
     override fun onBindViewHolder(holder: PokemonListHolder, position: Int) {
-        holder.bindItems(response?.pokemons?.get(position))
+        holder.bindItems(pokemonList?.get(position))
     }
 
-    override fun getItemCount() = response?.pokemons?.size!!
+    fun setPokemonList(pokemonList: List<Pokemon?>?){
+        this.pokemonList = pokemonList
+        notifyItemRangeChanged(0, 20)
+    }
+
+    override fun getItemCount() = pokemonList?.size ?: 0
 
 }
