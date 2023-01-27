@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Challenge3</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pokemon_image">Pokemon Image</string>
+
+    <string name="next_page">Next Page</string>
+    <string name="previous_page">Previous Page</string>
+
+</resources>
