@@ -38,7 +38,15 @@ class PokemonDetailFragment : Fragment() {
                 .load(it?.sprites?.frontDefault)
                 .into(binding.pokemonImage)
 
-            binding.pokemonDetailText.text = it?.id.toString()
+            binding.pokemonNameText.text = it?.pokemon_name
+            if(it?.types?.size != null){
+                for(i in 0 until it.types.size){
+                    binding.pokemonTypesText.append(" " + (it.types[i].type.name))
+                }
+            }
+            else{
+                binding.pokemonTypesText.append("")
+            }
         }
 
         return binding.root

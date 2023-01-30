@@ -8,7 +8,9 @@ data class PokemonDetail(
     @SerializedName("height") private val height: Int,
     @SerializedName("weight") private val weight: Int,
     @SerializedName("id") val id: Int,
-    @SerializedName("sprites") val sprites: Sprite
+    @SerializedName("name") val pokemon_name: String,
+    @SerializedName("sprites") val sprites: Sprite,
+    @SerializedName("types") val types: List<Type>
 ) {
     data class Sprite(
         @SerializedName("front_default") val frontDefault: String
@@ -24,4 +26,12 @@ data class PokemonDetail(
             @SerializedName("url") val url: String
         )
     }
+
+    data class Type(
+        @SerializedName("type") val type: TypeDetail
+    )
+
+    data class TypeDetail(
+        @SerializedName("name") val name: String
+    )
 }
