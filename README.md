@@ -14,3 +14,5 @@ This project is for learning the basics for sending a request to an API and show
 <img src="https://user-images.githubusercontent.com/61623237/215550553-56d2bcc5-e8e9-4017-ba33-76c6633e1b0e.png" width="200" height="400" >
 
 <img src="https://user-images.githubusercontent.com/61623237/215550558-273ff063-2d8e-4b63-8633-61b633750e17.png" width="200" height="400" hspace="20">
+
+</p>
